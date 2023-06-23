@@ -1,0 +1,6 @@
+---
+- name: Windows IIS provisioning
+  hosts: winserv
+  gather_facts: false
+  roles:
+    - winserv

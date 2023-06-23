@@ -1,0 +1,6 @@
+---
+- name: Windows Patch Management
+  hosts: winserv
+  gather_facts: false
+  roles:
+    - winupdate

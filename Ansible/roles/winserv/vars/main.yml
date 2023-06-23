@@ -1,0 +1,4 @@
+---
+web_app_name: my-web-app
+web_app_path: C:\\inetpub\\wwwroot\\index.html
+web_app_source: /home/ubuntu/ansible/application/index.html

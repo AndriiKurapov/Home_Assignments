@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "partitions": [
+    {"topic": "NeoGames", "partition": 0, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 1, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 2, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 3, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 4, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 5, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 6, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 7, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 8, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 9, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 10, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 11, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 12, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 13, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 14, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 15, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 16, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 17, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 18, "replicas": [0, 1]},
+    {"topic": "NeoGames", "partition": 19, "replicas": [0, 1]}
+  ]
+}

@@ -1,0 +1,2 @@
+[winserv]
+windows2022    ansible_host=3.14.136.157

@@ -1,0 +1,24 @@
+
+- name: Run ipconfig
+  raw: ipconfig
+  register: ipconfig
+- debug: var=ipconfig
+
+
+- name: Install IIS
+  win_feature:
+    name: "Web-Server"
+    state: present
+    restart: yes
+    include_sub_features: yes
+    include_management_tools: yes
+
+- name: Delete existing files in the web app directory
+  win_shell: |
+    Remove-Item -Path "C:\\inetpub\\wwwroot\\*" -Recurse -Force
+  changed_when: false
+
+- name: Copy index text page
+  win_copy:
+    src: "{{ web_app_source }}"
+    dest: "{{ web_app_path }}"
