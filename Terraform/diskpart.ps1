@@ -1,6 +1,12 @@
-# Get the disk number of the disk to extend
-$diskNumber = Get-Disk | Where-Object {$_.IsBoot -eq $false -and $_.IsSystem -eq $false} | Select-Object -ExpandProperty Number
+$diskNumber = 0
 
-# Extend the disk using Diskpart
-$diskpartScript = "select disk $diskNumber`nextend`nexit`n"
-Start-Process -FilePath "diskpart.exe" -ArgumentList "/s `"$diskpartScript`"" -NoNewWindow -Wait
+# Get the disk object
+$disk = Get-Disk -Number $diskNumber
+
+# Extend the partition to use all available space
+$partition = Get-Partition -DiskNumber $diskNumber | Where-Object {$_.PartitionNumber -eq 2}
+$partition | Resize-Partition -Size ($partition.Size + 1GB) # Add 1GB to the current size
+
+# Extend the volume to use all available space
+$volume = Get-Volume -Partition $partition
+$volume | Resize-Volume -Size ($volume.Size + 1GB) # Add 1GB to the current size

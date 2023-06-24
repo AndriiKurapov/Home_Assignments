@@ -6,6 +6,10 @@ provider "azurerm" {
 # Get the current Azure client configuration
 data "azurerm_client_config" "current" {}
 
+data "azurerm_subscription" "current" {
+  subscription_id = data.azurerm_client_config.current.subscription_id
+}
+
 # Define the resource group and location
 resource "azurerm_resource_group" "Task-Group-EastUS" {
   name     = "Terraform-resource-group"
@@ -120,24 +124,22 @@ resource "azurerm_network_interface" "Task-VM-NIC" {
   }
 }
 
-data "azurerm_subscription" "current" {
-  subscription_id = data.azurerm_client_config.current.subscription_id
+# Associate the security group with the network interface
+resource "azurerm_network_interface_security_group_association" "Task-NSG-Association" {
+  network_interface_id      = azurerm_network_interface.Task-VM-NIC.id
+  network_security_group_id = azurerm_network_security_group.Task-NSG.id
 }
 
-resource "azurerm_role_assignment" "key_vault" {
+# Subscription role assignments for Key Vault
+resource "azurerm_role_assignment" "key_vault_admin" {
   scope                = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
   principal_id         = data.azurerm_client_config.current.object_id
   role_definition_name = "Key Vault Administrator"
 }
 
-resource "azurerm_role_assignment" "key_vault1" {
+resource "azurerm_role_assignment" "key_vault_contrubutor" {
   scope                = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
   principal_id         = data.azurerm_client_config.current.object_id
   role_definition_name = "Key Vault Contributor"
 }
 
-# Associate the security group with the network interface
-resource "azurerm_network_interface_security_group_association" "Task-NSG-Assciation" {
-  network_interface_id      = azurerm_network_interface.Task-VM-NIC.id
-  network_security_group_id = azurerm_network_security_group.Task-NSG.id
-}
