@@ -1,4 +1,4 @@
-# Windows - Ansible
+# Ansible
 
 ## Task:
 1.	Write an Ansible playbook that installs and configures IIS on a Windows Server 2019 machine. 
